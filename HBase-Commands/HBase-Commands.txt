@@ -1,0 +1,272 @@
+[training@localhost ~]$ hbase
+Usage: hbase <command>
+where <command> an option from one of these categories:
+
+DBA TOOLS
+  shell            run the HBase shell
+  hbck             run the hbase 'fsck' tool
+  hlog             write-ahead-log analyzer
+  hfile            store file analyzer
+  zkcli            run the ZooKeeper shell
+
+PROCESS MANAGEMENT
+  master           run an HBase HMaster node
+  regionserver     run an HBase HRegionServer node
+  zookeeper        run a Zookeeper server
+  rest             run an HBase REST server
+  thrift           run an HBase Thrift server
+
+PACKAGE MANAGEMENT
+  classpath        dump hbase CLASSPATH
+  version          print the version
+
+ or
+  CLASSNAME        run the class named CLASSNAME
+Most commands print help when invoked w/o parameters.
+[training@localhost ~]$ hbase shell
+23/02/27 07:47:16 WARN conf.Configuration: hadoop.native.lib is deprecated. Instead, use io.native.lib.available
+HBase Shell; enter 'help<RETURN>' for list of supported commands.
+Type "exit<RETURN>" to leave the HBase Shell
+Version 0.92.1-cdh4.1.1, rUnknown, Tue Oct 16 11:44:19 PDT 2012
+
+hbase(main):001:0> help
+HBase Shell, version 0.92.1-cdh4.1.1, rUnknown, Tue Oct 16 11:44:19 PDT 2012
+Type 'help "COMMAND"', (e.g. 'help "get"' -- the quotes are necessary) for help on a specific command.
+Commands are grouped. Type 'help "COMMAND_GROUP"', (e.g. 'help "general"') for help on a command group.
+
+COMMAND GROUPS:
+  Group name: general
+  Commands: status, version, whoami
+
+  Group name: ddl
+  Commands: alter, alter_async, alter_status, create, describe, disable, disable_all, drop, drop_all, enable, enable_all, exists, is_disabled, is_enabled, list, show_filters
+
+  Group name: dml
+  Commands: count, delete, deleteall, get, get_counter, incr, put, scan, truncate
+
+  Group name: tools
+  Commands: assign, balance_switch, balancer, close_region, compact, flush, hlog_roll, major_compact, move, split, unassign, zk_dump
+
+  Group name: replication
+  Commands: add_peer, disable_peer, enable_peer, list_peers, remove_peer, start_replication, stop_replication
+
+  Group name: security
+  Commands: grant, revoke, user_permission
+
+SHELL USAGE:
+Quote all names in HBase Shell such as table and column names.  Commas delimit
+command parameters.  Type <RETURN> after entering a command to run it.
+Dictionaries of configuration used in the creation and alteration of tables are
+Ruby Hashes. They look like this:
+
+  {'key1' => 'value1', 'key2' => 'value2', ...}
+
+and are opened and closed with curley-braces.  Key/values are delimited by the
+'=>' character combination.  Usually keys are predefined constants such as
+NAME, VERSIONS, COMPRESSION, etc.  Constants do not need to be quoted.  Type
+'Object.constants' to see a (messy) list of all constants in the environment.
+
+If you are using binary keys or values and need to enter them in the shell, use
+double-quote'd hexadecimal representation. For example:
+
+  hbase> get 't1', "key\x03\x3f\xcd"
+  hbase> get 't1', "key\003\023\011"
+  hbase> put 't1', "test\xef\xff", 'f1:', "\x01\x33\x40"
+
+The HBase shell is the (J)Ruby IRB with the above HBase-specific commands added.
+For more on the HBase Shell, see http://hbase.apache.org/docs/current/book.html
+hbase(main):002:0> clear
+NameError: undefined local variable or method `clear' for #<Object:0x4276fd>
+
+hbase(main):003:0> 
+hbase(main):004:0* 
+hbase(main):005:0* 
+hbase(main):006:0* 
+[1]+  Stopped                 hbase shell
+[training@localhost ~]$ hbase shell
+23/02/27 07:48:09 WARN conf.Configuration: hadoop.native.lib is deprecated. Instead, use io.native.lib.available
+HBase Shell; enter 'help<RETURN>' for list of supported commands.
+Type "exit<RETURN>" to leave the HBase Shell
+Version 0.92.1-cdh4.1.1, rUnknown, Tue Oct 16 11:44:19 PDT 2012
+
+hbase(main):001:0> help
+HBase Shell, version 0.92.1-cdh4.1.1, rUnknown, Tue Oct 16 11:44:19 PDT 2012
+Type 'help "COMMAND"', (e.g. 'help "get"' -- the quotes are necessary) for help on a specific command.
+Commands are grouped. Type 'help "COMMAND_GROUP"', (e.g. 'help "general"') for help on a command group.
+
+COMMAND GROUPS:
+  Group name: general
+  Commands: status, version, whoami
+
+  Group name: ddl
+  Commands: alter, alter_async, alter_status, create, describe, disable, disable_all, drop, drop_all, enable, enable_all, exists, is_disabled, is_enabled, list, show_filters
+
+  Group name: dml
+  Commands: count, delete, deleteall, get, get_counter, incr, put, scan, truncate
+
+  Group name: tools
+  Commands: assign, balance_switch, balancer, close_region, compact, flush, hlog_roll, major_compact, move, split, unassign, zk_dump
+
+  Group name: replication
+  Commands: add_peer, disable_peer, enable_peer, list_peers, remove_peer, start_replication, stop_replication
+
+  Group name: security
+  Commands: grant, revoke, user_permission
+
+SHELL USAGE:
+Quote all names in HBase Shell such as table and column names.  Commas delimit
+command parameters.  Type <RETURN> after entering a command to run it.
+Dictionaries of configuration used in the creation and alteration of tables are
+Ruby Hashes. They look like this:
+
+  {'key1' => 'value1', 'key2' => 'value2', ...}
+
+and are opened and closed with curley-braces.  Key/values are delimited by the
+'=>' character combination.  Usually keys are predefined constants such as
+NAME, VERSIONS, COMPRESSION, etc.  Constants do not need to be quoted.  Type
+'Object.constants' to see a (messy) list of all constants in the environment.
+
+If you are using binary keys or values and need to enter them in the shell, use
+double-quote'd hexadecimal representation. For example:
+
+  hbase> get 't1', "key\x03\x3f\xcd"
+  hbase> get 't1', "key\003\023\011"
+  hbase> put 't1', "test\xef\xff", 'f1:', "\x01\x33\x40"
+
+The HBase shell is the (J)Ruby IRB with the above HBase-specific commands added.
+For more on the HBase Shell, see http://hbase.apache.org/docs/current/book.html
+hbase(main):002:0> create 'user',{name => 'info',versions =>1}
+NameError: undefined local variable or method `name' for #<Object:0x3f4a21>
+
+hbase(main):003:0> create 'user', {name => 'info',versions =>1}
+NameError: undefined local variable or method `name' for #<Object:0x3f4a21>
+
+hbase(main):004:0> create 'user', {NAME =>'info', versions =>1}
+NameError: undefined local variable or method `versions' for #<Object:0x3f4a21>
+
+hbase(main):005:0> create 'user', {NAME =>'info', VERSIONS =>1}
+0 row(s) in 1.5840 seconds
+
+hbase(main):006:0> describe 'user'
+DESCRIPTION                                          ENABLED                    
+ {NAME => 'user', FAMILIES => [{NAME => 'info', BLOO true                       
+ MFILTER => 'NONE', REPLICATION_SCOPE => '0', VERSIO                            
+ NS => '1', COMPRESSION => 'NONE', MIN_VERSIONS => '                            
+ 0', TTL => '2147483647', BLOCKSIZE => '65536', IN_M                            
+ EMORY => 'false', BLOCKCACHE => 'true'}]}                                      
+1 row(s) in 0.0530 seconds
+
+hbase(main):007:0> put 'user', '01', 'info :name', 'yaswanth'
+
+ERROR: org.apache.hadoop.hbase.client.RetriesExhaustedWithDetailsException: Failed 1 action: org.apache.hadoop.hbase.regionserver.NoSuchColumnFamilyException: Column family info  does not exist in region user,,1677502505966.587701a8b2f388d8248afb6b253ad4e3. in table {NAME => 'user', FAMILIES => [{NAME => 'info', BLOOMFILTER => 'NONE', REPLICATION_SCOPE => '0', COMPRESSION => 'NONE', VERSIONS => '1', TTL => '2147483647', MIN_VERSIONS => '0', BLOCKSIZE => '65536', IN_MEMORY => 'false', BLOCKCACHE => 'true'}]}
+	at org.apache.hadoop.hbase.regionserver.HRegionServer.multi(HRegionServer.java:3115)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.hadoop.hbase.ipc.WritableRpcEngine$Server.call(WritableRpcEngine.java:364)
+	at org.apache.hadoop.hbase.ipc.HBaseServer$Handler.run(HBaseServer.java:1345)
+: 1 time, servers with issues: localhost.localdomain:41324, 
+
+Here is some help for this command:
+Put a cell 'value' at specified table/row/column and optionally
+timestamp coordinates.  To put a cell value into table 't1' at
+row 'r1' under column 'c1' marked with the time 'ts1', do:
+
+  hbase> put 't1', 'r1', 'c1', 'value', ts1
+
+
+hbase(main):008:0> put 'user', '01', 'info :name', 'yaswanth'
+
+ERROR: org.apache.hadoop.hbase.client.RetriesExhaustedWithDetailsException: Failed 1 action: org.apache.hadoop.hbase.regionserver.NoSuchColumnFamilyException: Column family info  does not exist in region user,,1677502505966.587701a8b2f388d8248afb6b253ad4e3. in table {NAME => 'user', FAMILIES => [{NAME => 'info', BLOOMFILTER => 'NONE', REPLICATION_SCOPE => '0', COMPRESSION => 'NONE', VERSIONS => '1', TTL => '2147483647', MIN_VERSIONS => '0', BLOCKSIZE => '65536', IN_MEMORY => 'false', BLOCKCACHE => 'true'}]}
+	at org.apache.hadoop.hbase.regionserver.HRegionServer.multi(HRegionServer.java:3115)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.apache.hadoop.hbase.ipc.WritableRpcEngine$Server.call(WritableRpcEngine.java:364)
+	at org.apache.hadoop.hbase.ipc.HBaseServer$Handler.run(HBaseServer.java:1345)
+: 1 time, servers with issues: localhost.localdomain:41324, 
+
+Here is some help for this command:
+Put a cell 'value' at specified table/row/column and optionally
+timestamp coordinates.  To put a cell value into table 't1' at
+row 'r1' under column 'c1' marked with the time 'ts1', do:
+
+  hbase> put 't1', 'r1', 'c1', 'value', ts1
+
+
+hbase(main):009:0> put 'user', '01', 'info:name', 'yaswanth'
+0 row(s) in 0.0160 seconds
+
+hbase(main):010:0> scan 'user'
+ROW                   COLUMN+CELL                                               
+ 01                   column=info:name, timestamp=1677502737900, value=yaswanth 
+1 row(s) in 0.0530 seconds
+
+hbase(main):011:0> create 'blogs', 'meta', 'body', 'comments'
+0 row(s) in 1.0670 seconds
+
+hbase(main):012:0> describe 'blogs'
+DESCRIPTION                                          ENABLED                    
+ {NAME => 'blogs', FAMILIES => [{NAME => 'body', BLO true                       
+ OMFILTER => 'NONE', REPLICATION_SCOPE => '0', VERSI                            
+ ONS => '3', COMPRESSION => 'NONE', MIN_VERSIONS =>                             
+ '0', TTL => '2147483647', BLOCKSIZE => '65536', IN_                            
+ MEMORY => 'false', BLOCKCACHE => 'true'}, {NAME =>                             
+ 'comments', BLOOMFILTER => 'NONE', REPLICATION_SCOP                            
+ E => '0', VERSIONS => '3', COMPRESSION => 'NONE', M                            
+ IN_VERSIONS => '0', TTL => '2147483647', BLOCKSIZE                             
+ => '65536', IN_MEMORY => 'false', BLOCKCACHE => 'tr                            
+ ue'}, {NAME => 'meta', BLOOMFILTER => 'NONE', REPLI                            
+ CATION_SCOPE => '0', VERSIONS => '3', COMPRESSION =                            
+ > 'NONE', MIN_VERSIONS => '0', TTL => '2147483647',                            
+  BLOCKSIZE => '65536', IN_MEMORY => 'false', BLOCKC                            
+ ACHE => 'true'}]}                                                              
+1 row(s) in 0.0710 seconds
+
+hbase(main):013:0> list
+TABLE                                                                           
+blogs                                                                           
+user                                                                            
+2 row(s) in 0.0350 seconds
+
+hbase(main):014:0> crate 'mytable', 'cf'
+NoMethodError: undefined method `crate' for #<Object:0x3f4a21>
+
+hbase(main):015:0> create 'mytable', 'cf'
+0 row(s) in 1.1110 seconds
+
+hbase(main):016:0> put 'mytable', 'row1', 'cf:col', 'foo'
+0 row(s) in 0.0350 seconds
+
+hbase(main):017:0> flush 'mytable'
+0 row(s) in 0.1620 seconds
+
+hbase(main):018:0> scan 'mytable'
+ROW                              COLUMN+CELL                                                                                 
+ row1                            column=cf:col, timestamp=1677503868835, value=foo                                           
+1 row(s) in 0.0460 seconds
+
+hbase(main):019:0> put 'mytable', 'row2', 'cf:col', 'bar'
+0 row(s) in 0.0220 seconds
+
+hbase(main):020:0> flush 'mytable'
+0 row(s) in 0.1260 seconds
+
+hbase(main):021:0> scan 'mytable'
+ROW                              COLUMN+CELL                                                                                 
+ row1                            column=cf:col, timestamp=1677503868835, value=foo                                           
+ row2                            column=cf:col, timestamp=1677504035288, value=bar                                           
+2 row(s) in 0.0320 seconds
+
+hbase(main):022:0> put 'mytable', 'row3', 'cf:col', 'dall'
+0 row(s) in 0.0110 seconds
+
+hbase(main):023:0> flush 'mytable'
+0 row(s) in 0.1200 seconds
+
+hbase(main):024:0> major_compact 'mytable'
+0 row(s) in 0.1020 seconds
+
+hbase(main):025:0> 

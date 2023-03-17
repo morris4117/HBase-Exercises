@@ -1,0 +1,203 @@
+ hadoop fs -ls/hbase
+-ls/hbase: Unknown command
+[training@localhost ~]$ hadoop fs -ls/hbase
+-ls/hbase: Unknown command
+[training@localhost ~]$ hadoop fs -ls /hbase
+Found 10 items
+drwxr-xr-x   - hbase supergroup          0 2023-01-22 16:07 /hbase/-ROOT-
+drwxr-xr-x   - hbase supergroup          0 2023-01-22 16:07 /hbase/.META.
+drwxr-xr-x   - hbase supergroup          0 2023-01-23 04:17 /hbase/.corrupt
+drwxr-xr-x   - hbase supergroup          0 2023-02-27 06:18 /hbase/.logs
+drwxr-xr-x   - hbase supergroup          0 2023-02-27 06:29 /hbase/.oldlogs
+drwxr-xr-x   - hbase supergroup          0 2023-02-27 07:59 /hbase/blogs
+-rw-r--r--   1 hbase supergroup         38 2023-01-22 16:07 /hbase/hbase.id
+-rw-r--r--   1 hbase supergroup          3 2023-01-22 16:07 /hbase/hbase.version
+drwxr-xr-x   - hbase supergroup          0 2023-02-27 06:18 /hbase/splitlog
+drwxr-xr-x   - hbase supergroup          0 2023-02-27 07:55 /hbase/user
+[training@localhost ~]$ hadoop fs -ls /hbase/blogs
+Found 3 items
+-rw-r--r--   1 hbase supergroup       1367 2023-02-27 07:59 /hbase/blogs/.tableinfo.0000000001
+drwxr-xr-x   - hbase supergroup          0 2023-02-27 07:59 /hbase/blogs/.tmp
+drwxr-xr-x   - hbase supergroup          0 2023-02-27 07:59 /hbase/blogs/05499866b51f773246e0cd1dca7bc5c8
+[training@localhost ~]$ hadoop fs -ls cat^C
+[training@localhost ~]$ hadoop fs -ls cat /hbase/blogs/.tableinfo.0000000001
+
+ls: `cat': No such file or directory
+Found 1 items
+-rw-r--r--   1 hbase supergroup       1367 2023-02-27 07:59 /hbase/blogs/.tableinfo.0000000001
+[training@localhost ~]$ 
+[training@localhost ~]$ hadoop fs -cat /hbase/blogs/.tableinfo.0000000001
+blogsIS_ROOTfalseIS_METAfalsebody	
+                                        BLOOMFILTERNONEREPLICATION_SCOPEVERSIONS3
+                                                                                     COMPRESSIONNONE
+                                                                                                     MIN_VERSIONS0TTL
+2147483647	BLOCKSIZE65536	IN_MEMORYfalse
+BLOCKCACHEtrcomments	
+                        BLOOMFILTERNONEREPLICATION_SCOPEVERSIONS3
+                                                                     COMPRESSIONNONE
+                                                                                     MIN_VERSIONS0TTL
+2147483647	BLOCKSIZE65536	IN_MEMORYfalse
+BLOCKCACHEtrumeta	
+                        BLOOMFILTERNONEREPLICATION_SCOPEVERSIONS3
+                                                                     COMPRESSIONNONE
+                                                                                     MIN_VERSIONS0TTL
+2147483647	BLOCKSIZE65536	IN_MEMORYfalse
+BLOCKCACHEtrue
+
+{NAME => 'blogs', FAMILIES => [{NAME => 'body', BLOOMFILTER => 'NONE', REPLICATION_SCOPE => '0', VERSIONS => '3', COMPRESSION => 'NONE', MIN_VERSIONS => '0', TTL => '2147483647', BLOCKSIZE => '65536', IN_MEMORY => 'false', BLOCKCACHE => 'true'}, {NAME => 'comments', BLOOMFILTER => 'NONE', REPLICATION_SCOPE => '0', VERSIONS => '3', COMPRESSION => 'NONE', MIN_VERSIONS => '0', TTL => '2147483647', BLOCKSIZE => '65536', IN_MEMORY => 'false', BLOCKCACHE => 'true'}, {NAME => 'meta', BLOOMFILTER => 'NONE', REPLICATION_SCOPE => '0', VERSIONS => '3', COMPRESSION => 'NONE', MIN_VERSIONS => '0', TTL => '2147483647', BLOCKSIZE => '65536', IN_MEMORY => 'false', BLOCKCACHE => 'true'}]}[training@localhost ~]$ 
+[training@localhost ~]$ hadoop fs-ls /habse
+Exception in thread "main" java.lang.NoClassDefFoundError: fs-ls
+Caused by: java.lang.ClassNotFoundException: fs-ls
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:202)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:190)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:306)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:301)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:247)
+Could not find the main class: fs-ls.  Program will exit.
+[training@localhost ~]$ hadoop fs-ls /hbase
+Exception in thread "main" java.lang.NoClassDefFoundError: fs-ls
+Caused by: java.lang.ClassNotFoundException: fs-ls
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:202)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:190)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:306)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:301)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:247)
+Could not find the main class: fs-ls.  Program will exit.
+[training@localhost ~]$ hadoop fs -ls /hbase
+Found 11 items
+drwxr-xr-x   - hbase supergroup          0 2023-01-22 16:07 /hbase/-ROOT-
+drwxr-xr-x   - hbase supergroup          0 2023-01-22 16:07 /hbase/.META.
+drwxr-xr-x   - hbase supergroup          0 2023-01-23 04:17 /hbase/.corrupt
+drwxr-xr-x   - hbase supergroup          0 2023-02-27 06:18 /hbase/.logs
+drwxr-xr-x   - hbase supergroup          0 2023-02-27 06:29 /hbase/.oldlogs
+drwxr-xr-x   - hbase supergroup          0 2023-02-27 07:59 /hbase/blogs
+-rw-r--r--   1 hbase supergroup         38 2023-01-22 16:07 /hbase/hbase.id
+-rw-r--r--   1 hbase supergroup          3 2023-01-22 16:07 /hbase/hbase.version
+drwxr-xr-x   - hbase supergroup          0 2023-02-27 08:11 /hbase/mytable
+drwxr-xr-x   - hbase supergroup          0 2023-02-27 06:18 /hbase/splitlog
+drwxr-xr-x   - hbase supergroup          0 2023-02-27 07:55 /hbase/user
+[training@localhost ~]$ hadoop fs -ls /hbase/mytable
+Found 3 items
+-rw-r--r--   1 hbase supergroup        515 2023-02-27 08:11 /hbase/mytable/.tableinfo.0000000001
+drwxr-xr-x   - hbase supergroup          0 2023-02-27 08:11 /hbase/mytable/.tmp
+drwxr-xr-x   - hbase supergroup          0 2023-02-27 08:11 /hbase/mytable/fce69b7866c3425767e728b262728b4e
+[training@localhost ~]$ hadoop fs -ls /hbase/mytable/*/cf
+[training@localhost ~]$ hadoop fs -ls /hbase/mytable/*/cf
+[training@localhost ~]$ hadoop fs -ls /hbase/mytable/*/cf
+Found 1 items
+-rw-r--r--   1 hbase supergroup        613 2023-02-27 08:18 /hbase/mytable/fce69b7866c3425767e728b262728b4e/cf/d5f71367df4c4d31906d68a6d5aa571a
+[training@localhost ~]$ hadoop fs -ls /hbase/mytable/*/cf
+Found 2 items
+-rw-r--r--   1 hbase supergroup        613 2023-02-27 08:20 /hbase/mytable/fce69b7866c3425767e728b262728b4e/cf/395d3953366a4a82a3c97ca0a2026d3f
+-rw-r--r--   1 hbase supergroup        613 2023-02-27 08:18 /hbase/mytable/fce69b7866c3425767e728b262728b4e/cf/d5f71367df4c4d31906d68a6d5aa571a
+[training@localhost ~]$ hadoop fs -ls /hbase/mytable/*/cf
+Found 3 items
+-rw-r--r--   1 hbase supergroup        613 2023-02-27 08:20 /hbase/mytable/fce69b7866c3425767e728b262728b4e/cf/395d3953366a4a82a3c97ca0a2026d3f
+-rw-r--r--   1 hbase supergroup        613 2023-02-27 08:18 /hbase/mytable/fce69b7866c3425767e728b262728b4e/cf/d5f71367df4c4d31906d68a6d5aa571a
+-rw-r--r--   1 hbase supergroup        614 2023-02-27 08:30 /hbase/mytable/fce69b7866c3425767e728b262728b4e/cf/fa3427187f3943878a991ae3187b3882
+[training@localhost ~]$ hbase org.apache.hadoop.hbase.io.hfile.Hfile \--printkv --filr hdfs:\\localhost:8020/path from 8>
+bash: syntax error near unexpected token `newline'
+[training@localhost ~]$ hbase org.apache.hadoop.hbase.io.hfile.Hfile \--printkv --file hdfs:///hbase/mytable/*/cf
+Exception in thread "main" java.lang.NoClassDefFoundError: org/apache/hadoop/hbase/io/hfile/Hfile
+Caused by: java.lang.ClassNotFoundException: org.apache.hadoop.hbase.io.hfile.Hfile
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:202)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:190)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:306)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:301)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:247)
+Could not find the main class: org.apache.hadoop.hbase.io.hfile.Hfile.  Program will exit.
+[training@localhost ~]$ hbase org.apache.hadoop.hbase.io.hfile.Hfile \--printkv --file hdfs://hbase/mytable/*/cf
+Exception in thread "main" java.lang.NoClassDefFoundError: org/apache/hadoop/hbase/io/hfile/Hfile
+Caused by: java.lang.ClassNotFoundException: org.apache.hadoop.hbase.io.hfile.Hfile
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:202)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:190)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:306)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:301)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:247)
+Could not find the main class: org.apache.hadoop.hbase.io.hfile.Hfile.  Program will exit.
+[training@localhost ~]$ hadoop fs -ls /hbase/mytable/*/cf
+Found 3 items
+-rw-r--r--   1 hbase supergroup        613 2023-02-27 08:20 /hbase/mytable/fce69b7866c3425767e728b262728b4e/cf/395d3953366a4a82a3c97ca0a2026d3f
+-rw-r--r--   1 hbase supergroup        613 2023-02-27 08:18 /hbase/mytable/fce69b7866c3425767e728b262728b4e/cf/d5f71367df4c4d31906d68a6d5aa571a
+-rw-r--r--   1 hbase supergroup        614 2023-02-27 08:30 /hbase/mytable/fce69b7866c3425767e728b262728b4e/cf/fa3427187f3943878a991ae3187b3882
+[training@localhost ~]$ hbase org.apache.hadoop.hbase.io.hfile.Hfile \--printkv --file \
+> --printkv --^C
+[training@localhost ~]$ hbase org.apache.hadoop.hbase.io.hfile.Hfile \--printkv --file \
+> /hbase/mytable/fce69b7866c3425767e728b262728b4e/cf/395d3953366a4a82a3c97ca0a2026d3f
+Exception in thread "main" java.lang.NoClassDefFoundError: org/apache/hadoop/hbase/io/hfile/Hfile
+Caused by: java.lang.ClassNotFoundException: org.apache.hadoop.hbase.io.hfile.Hfile
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:202)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:190)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:306)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:301)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:247)
+Could not find the main class: org.apache.hadoop.hbase.io.hfile.Hfile.  Program will exit.
+[training@localhost ~]$ hbase org.apache.hadoop.hbase.io.hfile.Hfile \--printkv --file \
+> hdfs:///hbase/mytable/fce69b7866c3425767e728b262728b4e/cf/395d3953366a4a82a3c97ca0a2026d3f
+Exception in thread "main" java.lang.NoClassDefFoundError: org/apache/hadoop/hbase/io/hfile/Hfile
+Caused by: java.lang.ClassNotFoundException: org.apache.hadoop.hbase.io.hfile.Hfile
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:202)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:190)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:306)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:301)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:247)
+Could not find the main class: org.apache.hadoop.hbase.io.hfile.Hfile.  Program will exit.
+[training@localhost ~]$ hbase org.apache.hadoop.hbase.io.hfile.Hfile \--printkv --file \
+> 
+Exception in thread "main" java.lang.NoClassDefFoundError: org/apache/hadoop/hbase/io/hfile/Hfile
+Caused by: java.lang.ClassNotFoundException: org.apache.hadoop.hbase.io.hfile.Hfile
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:202)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:190)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:306)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:301)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:247)
+Could not find the main class: org.apache.hadoop.hbase.io.hfile.Hfile.  Program will exit.
+[training@localhost ~]$ 
+[training@localhost ~]$ hbase org.apache.hadoop.hbase.io.hfile.Hfile \--printkv --file hdfs://localhost:8020/^C
+[training@localhost ~]$ hbase org.apache.hadoop.hbase.io.hfile.Hfile \--printkv --file hdfs://localhost:8020/hbase/mytable/fce69b7866c3425767e728b262728b4e/cf/395d3953366a4a82a3c97ca0a2026d3f
+Exception in thread "main" java.lang.NoClassDefFoundError: org/apache/hadoop/hbase/io/hfile/Hfile
+Caused by: java.lang.ClassNotFoundException: org.apache.hadoop.hbase.io.hfile.Hfile
+	at java.net.URLClassLoader$1.run(URLClassLoader.java:202)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:190)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:306)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:301)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:247)
+Could not find the main class: org.apache.hadoop.hbase.io.hfile.Hfile.  Program will exit.
+[training@localhost ~]$ hbase org.apache.hadoop.hbase.io.hfile.HFile \--printkv --file hdfs://localhost:8020//hbase/mytable/fce69b7866c3425767e728b262728b4e/cf/395d3953366a4a82a3c97ca0a2026d3f 
+23/02/27 08:49:58 WARN conf.Configuration: hadoop.native.lib is deprecated. Instead, use io.native.lib.available
+23/02/27 08:49:58 WARN conf.Configuration: fs.default.name is deprecated. Instead, use fs.defaultFS
+23/02/27 08:49:59 INFO hfile.CacheConfig: Allocating LruBlockCache with maximum size 123.4m
+K: row2/cf:col/1677504035288/Put/vlen=3 V: bar
+Scanned kv count -> 1
+[training@localhost ~]$ hbase org.apache.hadoop.hbase.io.hfile.HFile \--printkv --file hdfs://localhost:8020/hbase/mytable/fce69b7866c3425767e728b262728b4e/cf/d5f71367df4c4d31906d68a6d5aa571a
+23/02/27 08:50:23 WARN conf.Configuration: hadoop.native.lib is deprecated. Instead, use io.native.lib.available
+23/02/27 08:50:23 WARN conf.Configuration: fs.default.name is deprecated. Instead, use fs.defaultFS
+23/02/27 08:50:24 INFO hfile.CacheConfig: Allocating LruBlockCache with maximum size 123.4m
+K: row1/cf:col/1677503868835/Put/vlen=3 V: foo
+Scanned kv count -> 1
+[training@localhost ~]$ hbase org.apache.hadoop.hbase.io.hfile.HFile \--printkv --file hdfs://localhost:8020/hbase/mytable/fce69b7866c3425767e728b262728b4e/cf/d5f71367df4c4d31906d68a6d5aa571a
+23/02/27 08:50:48 WARN conf.Configuration: hadoop.native.lib is deprecated. Instead, use io.native.lib.available
+23/02/27 08:50:48 WARN conf.Configuration: fs.default.name is deprecated. Instead, use fs.defaultFS
+23/02/27 08:50:49 INFO hfile.CacheConfig: Allocating LruBlockCache with maximum size 123.4m
+K: row1/cf:col/1677503868835/Put/vlen=3 V: foo
+Scanned kv count -> 1
+[training@localhost ~]$ hadoop fs -ls /hbase/mytable/*/cf
+Found 1 items
+-rw-r--r--   1 hbase supergroup        680 2023-02-27 08:52 /hbase/mytable/fce69b7866c3425767e728b262728b4e/cf/d21c1fb2036a490dbd4d9686c8e7f480
+[training@localhost ~]$ hbase org.apache.hadoop.hbase.io.hfile.HFile \--printkv --file hdfs://localhost:8020//hbase/mytable/fce69b7866c3425767e728b262728b4e/cf/d21c1fb2036a490dbd4d9686c8e7f480
+23/02/27 08:53:37 WARN conf.Configuration: hadoop.native.lib is deprecated. Instead, use io.native.lib.available
+23/02/27 08:53:37 WARN conf.Configuration: fs.default.name is deprecated. Instead, use fs.defaultFS
+23/02/27 08:53:38 INFO hfile.CacheConfig: Allocating LruBlockCache with maximum size 123.4m
+K: row1/cf:col/1677503868835/Put/vlen=3 V: foo
+K: row2/cf:col/1677504035288/Put/vlen=3 V: bar
+K: row3/cf:col/1677504612360/Put/vlen=4 V: dall
+Scanned kv count -> 3
+[training@localhost ~]$ 

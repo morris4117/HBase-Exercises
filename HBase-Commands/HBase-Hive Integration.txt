@@ -1,0 +1,33 @@
+training@localhost ~]$ hbase shell
+23/03/01 09:38:21 WARN conf.Configuration: hadoop.native.lib is deprecated. Instead, use io.native.lib.available
+HBase Shell; enter 'help<RETURN>' for list of supported commands.
+Type "exit<RETURN>" to leave the HBase Shell
+Version 0.92.1-cdh4.1.1, rUnknown, Tue Oct 16 11:44:19 PDT 2012
+
+hbase(main):001:0> create 'hbaseUserRatings', 'cf1'
+
+ERROR: Table already exists: hbaseUserRatings!
+
+Here is some help for this command:
+Create table; pass table name, a dictionary of specifications per
+column family, and optionally a dictionary of table configuration.
+Dictionaries are described below in the GENERAL NOTES section.
+Examples:
+
+  hbase> create 't1', {NAME => 'f1', VERSIONS => 5}
+  hbase> create 't1', {NAME => 'f1'}, {NAME => 'f2'}, {NAME => 'f3'}
+  hbase> # The above in shorthand would be the following:
+  hbase> create 't1', 'f1', 'f2', 'f3'
+  hbase> create 't1', {NAME => 'f1', VERSIONS => 1, TTL => 2592000, BLOCKCACHE => true}
+  hbase> create 't1', 'f1', {SPLITS => ['10', '20', '30', '40']}
+  hbase> create 't1', 'f1', {SPLITS_FILE => 'splits.txt'}
+
+
+hbase(main):002:0> scan 'hbaseUserRatings', {VERSIONS=>3}
+ROW                   COLUMN+CELL                                               
+ 10000                column=cf1:movieid, timestamp=1677679263526, value=4      
+ 10000                column=cf1:movieid, timestamp=1677679257501, value=21     
+ 10000                column=cf1:movieid, timestamp=1677679115807, value=5      
+1 row(s) in 0.2270 seconds
+
+hbase(main):003:0> 
